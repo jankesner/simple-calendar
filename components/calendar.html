@@ -1,0 +1,43 @@
+<div class="component component-calendar calendar mt-3 mb-3">
+	<div class="calendar-header pagination">
+		<div class="calendar-header-nav page-item">
+			<a href="javascript:;" class="page-link">
+				<i class="bi-arrow-left-circle"></i>
+			</a>
+		</div>
+		<div class="calendar-header-month page-item">
+			<a href="javascript:;" class="page-link">{{ title|raw }}</a>
+		</div>
+		<div class="calendar-header-nav page-item">
+			<a href="javascript:;" class="page-link">
+				<i class="bi-arrow-right-circle"></i>
+			</a>
+		</div>
+	</div>
+	<div class="calendar-header">
+		<div class="calendar-header-label">PO</div>
+		<div class="calendar-header-label">ÚT</div>
+		<div class="calendar-header-label">ST</div>
+		<div class="calendar-header-label">ČT</div>
+		<div class="calendar-header-label">PÁ</div>
+		<div class="calendar-header-label">SO</div>
+		<div class="calendar-header-label">NE</div>
+	</div>
+	<div class="calendar-days" data-pocetdni="{{ daysInMonth }}">
+		{% set emptyDay = '<div class="calendar-day calendar-day-empty"><a class="btn" disabled></a></div>' %}
+		{% for day in 1..daysInMonth %}
+			{%if loop.index == 1 %} 
+				{{ strRepeat(emptyDay, (day.den_v_tydnu - 1))|raw }}
+			{% endif %}
+			<div class="calendar-day has-events">
+				<a class="btn btn-primary">{{ day.den }}</a>
+			</div>
+			{%if day.den_v_tydnu %7 == 0 %}
+				<div class="calendar-break"></div>
+			{% endif %}
+			{% if loop.last and day.v_tydnu % 7 != 0 %}
+		        {{ strRepeat(emptyDay, (7 - (day.v_tydnu % 7)))|raw }}
+		    {% endif %}
+		{% endfor %}
+	</div>
+</div>

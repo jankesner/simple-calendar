@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+    <defs>
+      
+        <svg width="16" height="16" viewBox="0 0 16 16" id="minus"><path d="M0 6.5v3a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5H.5a.5.5 0 0 0-.5.5z"></path></svg>
+      
+        <svg width="16" height="16" viewBox="0 0 16 16" id="plus"><path d="M15.5 6H10V.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V6H.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5H6v5.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V10h5.5a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"></path></svg>
+      
+        <svg width="15" height="16" viewBox="0 0 15 16" id="search"><path d="M15 13l-3.893-3.893A5.921 5.921 0 0 0 12 6c0-3.313-2.688-6-6-6S0 2.687 0 6a6 6 0 0 0 6 6c1.143 0 2.2-.337 3.107-.891L13 15a.715.715 0 0 0 1 0l1-1a.713.713 0 0 0 0-1zm-9-3a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"></path></svg>
+      
+        <svg width="12" height="16" viewBox="0 0 12 16" id="triangle-down"><title>triangle-down</title><path fill="#444" d="M0 6l5.996 5.996L11.992 6H0z"></path></svg>
+      
+        <svg width="6" height="16" viewBox="0 0 6 16" id="triangle-left"><title>triangle-left</title><path fill="#444" d="M0 7.998l5.996 5.996V2.002L0 7.998z"></path></svg>
+      
+        <svg width="6" height="16" viewBox="0 0 6 16" id="triangle-right"><title>triangle-right</title><path fill="#444" d="M.001 2.004L5.997 8 .001 13.996V2.004z"></path></svg>
+      
+        <svg width="12" height="16" viewBox="0 0 12 16" id="triangle-up"><title>triangle-up</title><path fill="#444" d="M5.996 4L0 9.996h11.992L5.996 4z"></path></svg>
+      
+  </defs>
+</svg>

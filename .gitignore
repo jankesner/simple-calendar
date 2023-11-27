@@ -1,0 +1,5 @@
+vendor/**
+docs/**
+node_modules/**
+dependencyGraph.json
+package-lock.json
