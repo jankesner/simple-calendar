@@ -1,43 +1,53 @@
-<div class="component component-calendar calendar mt-3 mb-3">
-	<div class="calendar-header pagination">
-		<div class="calendar-header-nav page-item">
-			<a href="javascript:;" class="page-link">
-				<i class="bi-arrow-left-circle"></i>
-			</a>
-		</div>
-		<div class="calendar-header-month page-item">
-			<a href="javascript:;" class="page-link">{{ title|raw }}</a>
-		</div>
-		<div class="calendar-header-nav page-item">
-			<a href="javascript:;" class="page-link">
-				<i class="bi-arrow-right-circle"></i>
-			</a>
-		</div>
-	</div>
-	<div class="calendar-header">
-		<div class="calendar-header-label">PO</div>
-		<div class="calendar-header-label">ÚT</div>
-		<div class="calendar-header-label">ST</div>
-		<div class="calendar-header-label">ČT</div>
-		<div class="calendar-header-label">PÁ</div>
-		<div class="calendar-header-label">SO</div>
-		<div class="calendar-header-label">NE</div>
-	</div>
-	<div class="calendar-days" data-pocetdni="{{ daysInMonth }}">
-		{% set emptyDay = '<div class="calendar-day calendar-day-empty"><a class="btn" disabled></a></div>' %}
-		{% for day in 1..daysInMonth %}
-			{%if loop.index == 1 %} 
-				{{ strRepeat(emptyDay, (day.den_v_tydnu - 1))|raw }}
-			{% endif %}
-			<div class="calendar-day has-events">
-				<a class="btn btn-primary">{{ day.den }}</a>
+{% if (month and year) %}
+	<div class="component component-calendar calendar mt-3 mb-3" id="calendar">
+		<div class="calendar-header pagination">
+			<div class="calendar-header-nav page-item">
+				<a href="javascript:;" class="page-link" hx-get="{{ linkPrev }}" hx-target="#calendar" hx-swap="outerHTML">
+					<i class="bi-arrow-left-circle"></i>
+				</a>
 			</div>
-			{%if day.den_v_tydnu %7 == 0 %}
-				<div class="calendar-break"></div>
-			{% endif %}
-			{% if loop.last and day.v_tydnu % 7 != 0 %}
-		        {{ strRepeat(emptyDay, (7 - (day.v_tydnu % 7)))|raw }}
-		    {% endif %}
-		{% endfor %}
+			<div class="calendar-header-month page-item">
+				<a href="javascript:;" class="page-link">{{ title|raw }}</a>
+			</div>
+			<div class="calendar-header-nav page-item">
+				<a href="javascript:;" class="page-link" hx-get="{{ linkNext }}" hx-target="#calendar" hx-swap="outerHTML">
+					<i class="bi-arrow-right-circle"></i>
+				</a>
+			</div>
+		</div>
+		<div class="calendar-header">
+			<div class="calendar-header-label">PO</div>
+			<div class="calendar-header-label">ÚT</div>
+			<div class="calendar-header-label">ST</div>
+			<div class="calendar-header-label">ČT</div>
+			<div class="calendar-header-label">PÁ</div>
+			<div class="calendar-header-label">SO</div>
+			<div class="calendar-header-label">NE</div>
+		</div>
+		<div class="calendar-days" data-daysInMonth="{{ daysInMonth }}">
+			{% set emptyDay = '<div class="calendar-day calendar-day-empty"><a class="btn" disabled>&nbsp;</a></div>' %}
+			{% for day in days %}
+				{%if loop.index == 1 %} 
+					{{ strRepeat(emptyDay, (day.dayOfWeek - 1))|raw }}
+					{% set offset = (day.dayOfWeek - 1) %}
+				{% endif %}
+				<div class="calendar-day{% if day.events|length > 2 %} has-events{% endif %}" data-events="{{ day.events }}">
+					<a class="btn btn-primary">{{ day.day }}</a>
+				</div>
+				{%if day.dayOfWeek %7 == 0 %}
+					<div class="calendar-break"></div>
+				{% endif %}
+				{% if loop.last %}
+			        {% if (daysInMonth + offset) > 35 %}
+			    		{{ strRepeat(emptyDay, (42 - daysInMonth - offset))|raw }}
+			    	{% else %}
+			    		{{ strRepeat(emptyDay, (35 - daysInMonth - offset))|raw }}
+			    	{% endif %}
+			    {% endif %}
+			{% endfor %}
+		</div>
+		<div class="calendar-events"></div>
 	</div>
-</div>
+{% else %} 
+	<div id="calendar-wrapper" hx-get="calendar.php?month=11&year=2023" hx-trigger="load" hx-target="#calendar-wrapper" hx-swap="outerHTML"></div>
+{% endif %}

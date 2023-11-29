@@ -1,0 +1,1 @@
+import Calendar from"../_patterns/molecules/calendar/calendar.js";class Main{constructor(){console.log("Main"),(new Calendar).init()}}new Main;

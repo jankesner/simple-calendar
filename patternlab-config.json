@@ -78,8 +78,8 @@
     "inreview",
     "complete"
   ],
-  "patternExportAll": true,
-  "patternExportDirectory": "pattern_exports",
+  "patternExportAll": false,
+  "patternExportDirectory": "components",
   "patternExportPatternPartials": [],
   "patternExportPreserveDirectoryStructure": true,
   "patternExportRaw": false,
